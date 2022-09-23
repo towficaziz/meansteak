@@ -1,0 +1,9 @@
+
+mat-form-field, textarea{
+  width: 100%;
+}
+button{
+  color: rgb(254, 254, 254);
+  border-radius: 2px rgb(153, 97, 51);
+  background-color: rgb(44, 95, 130);
+}

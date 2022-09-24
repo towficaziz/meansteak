@@ -6,3 +6,9 @@
 .info-text{
   text-align: center;
 }
+
+mat-spinner{
+  margin: auto;
+  stroke: #ff2a9f;
+}
+

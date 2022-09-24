@@ -7,3 +7,7 @@ button{
   border-radius: 2px rgb(153, 97, 51);
   background-color: rgb(44, 95, 130);
 }
+
+mat-spinner{
+  margin: auto;
+}

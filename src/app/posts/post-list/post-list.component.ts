@@ -16,10 +16,6 @@ export class PostListComponent implements OnInit, OnDestroy
   private postsSub!: Subscription;
   constructor(public postsService: PostsService) { }
 
-  ngOnDestroy() {
-    this.postsSub.unsubscribe();
-  }
-
 
   ngOnInit() {
     this.postsService.getPosts();
@@ -28,6 +24,15 @@ export class PostListComponent implements OnInit, OnDestroy
       this.posts = posts;
     });
   }
+
+  onDelete(postId: string){
+    this.postsService.deletePost(postId);
+  }
+
+  ngOnDestroy() {
+    this.postsSub.unsubscribe();
+  }
+
 
 
 

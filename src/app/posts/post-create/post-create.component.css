@@ -8,6 +8,26 @@ button{
   background-color: rgb(44, 95, 130);
 }
 
+
 mat-spinner{
   margin: auto;
+}
+
+input[type="file"]{
+  visibility:hidden;
+}
+.b-color{
+  background-color:rgb(10, 65, 67);
+}
+.bottom-margin{
+  margin-bottom: 1rem;
+}
+
+.image-preview{
+  height: 4rem !important;
+  margin: 1rem 0;
+}
+
+.image-preview img {
+  height: 100%;
 }

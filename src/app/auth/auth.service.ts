@@ -8,12 +8,17 @@ import { AuthData } from "./auth-data.model";
   providedIn: 'root'
 })
 export class AuthService{
+  private userIsAuthenticatedAgain = false;
   private token!: string;
   private authStatusListener = new Subject<boolean>();
   constructor(private http: HttpClient){}
 
   getToken(){
     return this.token;
+  }
+
+  getIsAuth(){
+    return this.userIsAuthenticatedAgain;
   }
 
   getAuthStatusListener(){
@@ -34,7 +39,10 @@ export class AuthService{
     .subscribe(response =>{
       const token = response.token;
       this.token = token;
+      if(token){
+      this.userIsAuthenticatedAgain = true;
       this.authStatusListener.next(true);
+      }
     })
   }
 }

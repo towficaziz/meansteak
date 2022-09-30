@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
@@ -11,7 +12,7 @@ export class AuthService{
   private userIsAuthenticatedAgain = false;
   private token!: string;
   private authStatusListener = new Subject<boolean>();
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient, private router: Router){}
 
   getToken(){
     return this.token;
@@ -42,6 +43,7 @@ export class AuthService{
       if(token){
       this.userIsAuthenticatedAgain = true;
       this.authStatusListener.next(true);
+      this.router.navigate(["/"]);
       }
     });
   }
@@ -50,5 +52,6 @@ export class AuthService{
     this.token = '';
     this.userIsAuthenticatedAgain = false;
     this.authStatusListener.next(false);
+    this.router.navigate(["/"]);
   }
 }

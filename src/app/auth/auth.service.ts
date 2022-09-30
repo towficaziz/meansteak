@@ -43,6 +43,12 @@ export class AuthService{
       this.userIsAuthenticatedAgain = true;
       this.authStatusListener.next(true);
       }
-    })
+    });
+  }
+
+  logout(){
+    this.token = '';
+    this.userIsAuthenticatedAgain = false;
+    this.authStatusListener.next(false);
   }
 }

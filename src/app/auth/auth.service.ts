@@ -14,6 +14,7 @@ export class AuthService{
   private tokenTimer: any;
   private userId!: string;
   private authStatusListener = new Subject<boolean>();
+  _router: any;
   constructor(private http: HttpClient, private router: Router){}
 
   getToken(){
@@ -34,9 +35,12 @@ export class AuthService{
 
   createUser(email: string, password: string){
     const authData: AuthData ={email: email, password: password};
-    this.http.post("http://localhost:3000/api/user/signup",authData)
-    .subscribe(response =>{
-      console.log(response);
+    this.http
+    .post("http://localhost:3000/api/user/signup", authData)
+    .subscribe(() =>{
+      this.router.navigate(["/"]); // this.router.navigate["/"];
+    }, error =>{
+      this.authStatusListener.next(false);
     });
   }
 
@@ -58,6 +62,8 @@ export class AuthService{
       this.saveAuthData(token, expirationDate, this.userId);
       this.router.navigate(["/"]);
       }
+    }, error =>{
+      this.authStatusListener.next(false);
     });
   }
 

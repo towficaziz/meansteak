@@ -42,10 +42,10 @@ exports.updatePost = (req, res, next)=>{
   Post.updateOne({_id: req.params.id, creator: req.userData.userId}, post)
   .then(result =>{
      console.log(result);
-    if(result.modifiedCount > 0){
+    if(result.matchedCount > 0){  // use of 'modifiedCount'  will give error Not authorized!
       res.status(200).json({message: "Update successfull!"});
     } else {
-      res.status(401).json({message: "Not authorized!"});
+      res.status(401).json({message: "Not authorized!!"});
     }
   })
   .catch(error =>{

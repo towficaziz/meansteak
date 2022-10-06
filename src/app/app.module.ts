@@ -14,6 +14,7 @@ import { AngularMaterialModule } from './angular-material.module'; // this for a
 import { PostsModule } from './posts/posts.module'; // this for posts component optimization
 import { AuthModule } from './auth/auth.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,7 @@ import { AuthModule } from './auth/auth.module';
 
     AngularMaterialModule,
     PostsModule,
-    AuthModule
+    // AuthModule
 
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
